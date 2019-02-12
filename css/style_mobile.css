@@ -1,0 +1,288 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,700,900&subset=korean');
+
+/*reset*/
+body {margin: 0;}
+h1, h2, h3, h4, h5, h6, ol, ul, li, dl, dt, dd, p, figure, video {margin: 0; padding: 0;}
+header, main, footer, article, section, aside, nav, figure {display: block;}
+a {text-decoration: none; color: inherit;}
+a img {border: none;}
+li {list-style: none;}
+table {border-collapse: collapse;}
+address, em {font-style: normal;}
+
+/*common*/
+body {font: 14px 'Noto Sans KR', '나눔고딕', '돋움', Dotum, Helvetica, 'Apple SD Gothic Neo', 'sans-serif'; color: #222; background: #fff;}
+#skip-nav {position: fixed; top: -40px; left: 0; width: 100%; line-height: 40px; text-align: center; font-size: 17px; color: #fff; background: rgba(0, 0, 0, 0.5); z-index: 10000; transition: 0.3s;}
+#skip-nav:focus {top: 0;}
+#wrapper {width: 100%; min-width: 320px; overflow-x: hidden;}
+#layer-mask {position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 101;}
+.pc {display: none;}
+
+/*loading*/
+#loading {position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #fff; transition: 0.3s; z-index: 10000;}
+#loading img.loading-image {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 200px; height: auto;}
+
+/*gnb*/
+#header h1 {position: fixed; top: 20px; left: 30px; z-index: 201; transition: 0.3s;}
+#header h1 img {position: absolute; top: 0; left: 0; transition: 0.7s;}
+#header h1 img.black {opacity: 0; width: 80px; height: auto;}
+#header h1 img.white {opacity: 1; width: 100px; height: auto;}
+#header h1.open img.black {opacity: 1;}
+#header h1.open img.white {opacity: 0;}
+#header div.menu.gnb {position: fixed; top: 20px; right: 30px; width: 48px; height: 48px; border: 3px solid #ff3f34; line-height: 50px; border-radius: 50px; text-align: center; box-sizing: border-box; background: #ff3f34; z-index: 1000; transition: 0.4s;}
+#header div.menu.gnb a {position: relative; display: inline-block; width: 18px; height: 20px; overflow: hidden;}
+#header div.menu.gnb a:before {content: ''; position: absolute; top: 0; left: 50%; width: 18px; height: 4px; border-radius: 10px; background: #fff; transition: 0.2s;}
+#header div.menu.gnb a:after {content: ''; position: absolute; bottom: 0; left: -50%; width: 18px; height: 4px; border-radius: 10px; background: #fff; transition: 0.2s;}
+#header div.menu.gnb a span {position: absolute; top: 50%; left: 0; transform: translate(0, -50%); width: 18px; height: 4px; border-radius: 10px; text-indent: -999px; overflow: hidden; background: #fff; transition: 0.2s;}
+#header div.menu.gnb a:hover:before,
+#header div.menu.gnb a:hover:after {left: 0;}
+#header div.menu.gnb a:hover span {left: 50%;}
+#header div.menu.gnb.open {border: 3px solid #b2b2b2; background: #fff;}
+#header div.menu.gnb.open a {width: 20px;}
+#header div.menu.gnb.open a:before {top: 50%; left: 0; transform: translate(0, -50%); background: #333;}
+#header div.menu.gnb.open a:after {top: 50%; left: 0; transform: translate(0, -50%); background: #333;}
+#header div.menu.gnb.open a span {opacity: 0;}
+#header div.menu.gnb.open a:hover:before {top: 2px; left: 5px; width: 20px; height: 4px; transform-origin: left top; transform: rotate(45deg);}
+#header div.menu.gnb.open a:hover:after {top: 15px; left: 5px; width: 20px; height: 4px; transform-origin: left bottom; transform: rotate(-45deg);}
+#gnb {position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; padding: 30% 0 0 10%; box-sizing: border-box; overflow: scroll; background: #fff; z-index: 200; transition: 0.4s ease-in-out;}
+#header div.menu.gnb.open + #gnb {right: 0;}
+#gnb > ul.gnb > li > a {display: block; line-height: 53px; font-size: 34px; font-weight: 900;}
+#gnb > ul.gnb > li.on > a {color: #ff3f34; padding-left: 0;}
+#gnb > ul.gnb > li > ul > li > a {display: block; font-size: 18px; font-weight: 900;}
+#gnb > ul.header-util {margin-top: 5%;}
+#gnb > ul.header-util li {float: left;}
+#gnb > ul.header-util li + li {margin-left: 25px;}
+#gnb > ul.header-util li a {color: #888;}
+#gnb > ul.header-util li a:hover,
+#gnb > ul.header-util li a:focus {color: #ff3f34;}
+
+/*main*/
+section.scroll-page {position: relative; top: 0; left: 0; width: 100%; height: 100vh;}
+a.hidden {position: fixed; left: 0; width: 200px; height: 0; line-height: 30px; text-align: center; color: #ffffff; background: rgba(0, 0, 0, 0.5); overflow: hidden; transition: height 0.3s;}
+a.hidden:focus {height: 30px;}
+a.hidden.start {top: 0;}
+a.hidden.end {bottom: 30px;}
+
+/*main-visual*/
+#main-visual {background: #fff;}
+#main-visual h2 {width: 0; height: 0; font-size: 0; text-indent: -999px; overflow: hidden;}
+#main-visual div.main-slide-box {position: absolute; top: 0; right: 0; width: 100%; height: 100%; transition: 0.5s;}
+#main-visual div.main-slide-box ul.slide {position: relative; width: 100%; height: 100%; background: #717171;}
+#main-visual div.main-slide-box ul.slide li {position: absolute; width: 100%; height: 100%; display: none; overflow: hidden;}
+#main-visual div.main-slide-box ul.slide li:first-child {display: block; background: url(../img/mobile_bg1.jpg) no-repeat center/ cover;}
+#main-visual div.main-slide-box ul.slide li:nth-child(2) {background: url(../img/mobile_bg2.jpg) no-repeat center/ cover;}
+#main-visual div.main-slide-box ul.slide li:nth-child(3) {background: url(../img/mobile_bg3.jpg) no-repeat center/ cover;}
+#main-visual div.main-slide-box ul.slide li div {position: absolute; top: 50%; left: 30px; transform: translate(0, -50%); opacity: 0;}
+#main-visual.show div.main-slide-box ul.slide li div {animation: open01 1.5s 0.5s forwards;}
+#main-visual div.main-slide-box ul.slide li div p.title {text-align: left; font-size: 28px; font-weight: 700; color: #fff; transition: 0.3s;}
+#main-visual div.main-slide-box ul.slide li div p.text {text-align: left; color: #fff;}
+#main-visual div.main-slide-box ul.slide li div p.text:after {content: ''; display: block; width: 400px; height: 3px; margin: 25px 0; background: #ff3f34; transition: 0.3s;}
+#main-visual div.banner {position: absolute; bottom: 3%; left: 0; width: 60%; opacity: 0;}
+#main-visual.show div.banner {animation: open02 1.5s 0.5s forwards;}
+#main-visual div.banner div.event {position: relative; margin-bottom: 30px;}
+#main-visual div.banner div.event a.image {display: block;}
+#main-visual div.banner div.event a.image img {width: 100%; max-width: 336px;}
+#main-visual div.banner div.event div {position: absolute; width: 125px; height: 20px; bottom: 20px; left: -28px; overflow: hidden;}
+#main-visual div.banner div.event div a.more {position: absolute; top: 0; left: 10px; width: 100px; text-align: right; color: #555; font-weight: 900; background: url(../img/banner_arrow2.png) no-repeat left -30px center; transition: 0.3s;}
+
+@keyframes open01 {
+    from {left: -30px; opacity: 0;}
+    to {left: 30px; opacity: 1;}
+}
+@keyframes open02 {
+    from {left: -30px; opacity: 0;}
+    to {left: 40px; opacity: 1;}
+}
+@keyframes open03 {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes updown {
+    from {background-position: bottom 35px center;}
+    50% {background-position: bottom 25px center;}
+    to {background-position: bottom 35px center;}
+}
+@media screen and (max-width: 560px) {
+    #main-visual div.main-slide-box ul.slide li div p.title {font-size: 20px;}
+    #main-visual div.main-slide-box ul.slide li div p.text {font-size: 11px;}
+    #main-visual div.main-slide-box ul.slide li div p.text:after {content: ''; display: block; width: 250px; height: 2px; margin: 10px 0; background: #ff3f34;}
+}
+
+
+/*main-contents*/
+#main-contents {background: no-repeat center/ cover; overflow: hidden; background-image: url(../img/main-cont-s1_bg.png);}
+#main-contents h2 {height: 0; width: 0; text-indent: -999px; overflow: hidden;}
+#main-contents div.wrap {position: absolute; top: 10%; left: 50%; transform: translate(-50%, 0); width: 70%; height: 82%; overflow: hidden; z-index: 13;}
+#main-contents div.wrap ul {position: absolute; width: 100%; height: 100%;}
+#main-contents div.wrap ul li {display: none; position: absolute; width: 100%; height: 100%;}
+#main-contents div.wrap ul li:first-child {display: block;}
+#main-contents div.wrap ul li div.images {position: relative; width: 90%; height: 100%; margin: 0 auto;}
+#main-contents div.wrap ul li div.images div.box {position: absolute; top: 50%; transform: translate(0, -50%);}
+#main-contents div.wrap ul li:nth-child(1) div.images div.box {background: url(../img/main-cont-s1_logo.png) no-repeat right 4% top 4%;}
+#main-contents div.wrap ul li:nth-child(2) div.images div.box {background: url(../img/main-cont-s3_logo.png) no-repeat right 4% top 4%;}
+#main-contents div.wrap ul li:nth-child(3) div.images div.box {background: url(../img/main-cont-s2_logo.png) no-repeat right 4% top 4%;}
+#main-contents div.wrap ul li div.images div.box p {position: absolute; top: 4%; left: 4%; line-height: 85px; font-size: 85px; color: #fff; font-weight: 700;}
+#main-contents div.wrap ul li div.images div.box img.img1 {width: 100%; height: 100%;}
+#main-contents div.wrap ul li div.images div.box img.img2 {position: absolute; bottom: -10%; left: -17%; width: 155%;}
+#main-contents div.wrap ul li div.images div.box img.img3 {position: absolute; bottom: -15%; left: 16%; width: 30%;}
+
+@media screen and (max-width: 760px) {
+    #main-contents div.wrap ul li div.images div.box p {line-height: 50px; font-size: 50px;}
+    #main-contents div.wrap ul li:nth-child(1) div.images div.box {background-size: 80px auto;}
+    #main-contents div.wrap ul li:nth-child(2) div.images div.box {background-size: 80px auto;}
+    #main-contents div.wrap ul li:nth-child(3) div.images div.box  {background-size: 50px auto;}
+}
+
+#main-contents div.background > div {display: none;}
+#main-contents div.background > div img {position: absolute;}
+#main-contents div.background div div.moving1 {position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;}
+#main-contents div.background div div.moving2 {position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;}
+#main-contents div.background div.images1 img.img1 {top: 45%; left: 5%; width: 25%; z-index: 12; opacity: 0; animation: bounce-top 1.5s ease-in 0.3s forwards;}
+#main-contents div.background div.images1 img.img2 {top: 41%; left: 65%; width: 35%; z-index: 12; opacity: 0; animation: bounce-top 1.5s ease-in 0.2s forwards;}
+#main-contents div.background div.images1 img.img3 {top: 30%; left: 55%; width: 190px; z-index: 11; opacity: 0; animation: bounce-top 1.3s ease-in forwards;}
+#main-contents div.background div.images1 img.img4 {top: 5%; left: 53%; z-index: 14; opacity: 0; animation: bounce-top 1.8s ease-in 0.6s forwards;}
+#main-contents div.background div.images1 img.img5 {bottom: -23%; left: 15%; width: 27%; min-width: 430px; z-index: 14; transition: 1s; opacity: 0; animation: bounce-bottom-small 1.8s ease-in 0.6s forwards;}
+#main-contents div.background div.images2 img.img1 {top: -14%; left: 22%; width: 53%; min-width: 300px; height: 120%; z-index: 12; opacity: 0; animation: slide-up 0.3s ease-in 0s forwards;}
+#main-contents div.background div.images2 img.img2 {bottom: -8%; left: 23%; width: 17%; min-width: 300px; z-index: 11; transition: 1s; animation: slide-up 0.5s ease-in 0s forwards;}
+#main-contents div.background div.images2 img.img3 {bottom: -9%; left: 37%; width: 29%; min-width: 480px; z-index: 13; transition: 1s; opacity: 0; animation: bounce-bottom-small 1.3s ease-in 0s forwards;}
+#main-contents div.background div.images2 img.img4 {bottom: -30%; left: 5%; z-index: 14; opacity: 0; animation: slide-up 0.7s ease-in 0s forwards;}
+#main-contents div.background div.images2 img.img5 {top: -6%; left: 73%; width: 10%; z-index: 12; opacity: 0; animation: bounce-top-small 1.8s ease-in 0.2s forwards;}
+#main-contents div.background div.images2 img.img6 {top: -25%; left: 73%; z-index: 14; opacity: 0; animation: slide-down 0.7s ease-in 0s forwards;}
+#main-contents div.background div.images2 img.img7 {top: -31%; left: 13%; z-index: 14; opacity: 0; animation: slide-down 0.7s ease-in 0s forwards;}
+#main-contents div.background div.images3 img.img1 {bottom: -1%; left: 10%; width: 40%; min-width: 600px; z-index: 14; transition: 1s; opacity: 0; animation: bounce-bottom-small 1.3s ease-in 0s forwards;}
+
+@keyframes bounce-top {
+    0% {transform: translateY(-300%); animation-timing-function: ease-in; opacity: 0;}
+      24% {opacity: 1;}
+    25% {transform: translateY(0%); animation-timing-function: ease-out;}
+      40% {transform: translateY(-70%); animation-timing-function: ease-in;
+      }
+    55% {transform: translateY(0%); animation-timing-function: ease-out;}
+      65% {transform: translateY(-25%); animation-timing-function: ease-in;}
+    75% {transform: translateY(0%); animation-timing-function: ease-out;}
+      87% {transform: translateY(-15%); animation-timing-function: ease-in;
+      }
+      100% {transform: translateY(0%); animation-timing-function: ease-out; opacity: 1;
+      }
+}
+@keyframes bounce-top-small {
+    0% {transform: translateY(-150%); animation-timing-function: ease-in; opacity: 0;}
+      24% {opacity: 1;}
+    25% {transform: translateY(0%); animation-timing-function: ease-out;}
+      40% {transform: translateY(-35%); animation-timing-function: ease-in;
+      }
+    55% {transform: translateY(0%); animation-timing-function: ease-out;}
+      65% {transform: translateY(-12%); animation-timing-function: ease-in;}
+    75% {transform: translateY(0%); animation-timing-function: ease-out;}
+      87% {transform: translateY(-7%); animation-timing-function: ease-in;
+      }
+      100% {transform: translateY(0%); animation-timing-function: ease-out; opacity: 1;
+      }
+}
+@keyframes bounce-bottom {
+    0% {transform: translateY(300%); animation-timing-function: ease-in; opacity: 0;}
+      24% {opacity: 1;}
+    25% {transform: translateY(0%); animation-timing-function: ease-out;}
+      40% {transform: translateY(70%); animation-timing-function: ease-in;
+      }
+    55% {transform: translateY(0%); animation-timing-function: ease-out;}
+      65% {transform: translateY(25%); animation-timing-function: ease-in;}
+    75% {transform: translateY(0%); animation-timing-function: ease-out;}
+      87% {transform: translateY(15%); animation-timing-function: ease-in;
+      }
+      100% {transform: translateY(0%); animation-timing-function: ease-out; opacity: 1;
+      }
+}
+@keyframes bounce-bottom-small {
+    0% {transform: translateY(150%); animation-timing-function: ease-in; opacity: 0;}
+      24% {opacity: 1;}
+    25% {transform: translateY(0%); animation-timing-function: ease-out;}
+      40% {transform: translateY(35%); animation-timing-function: ease-in;
+      }
+    55% {transform: translateY(0%); animation-timing-function: ease-out;}
+      65% {transform: translateY(13%); animation-timing-function: ease-in;}
+    75% {transform: translateY(0%); animation-timing-function: ease-out;}
+      87% {transform: translateY(7%); animation-timing-function: ease-in;
+      }
+      100% {transform: translateY(0%); animation-timing-function: ease-out; opacity: 1;
+      }
+}
+@keyframes slide-down {
+    0% {transform: translateY(-50%); animation-timing-function: ease-in; opacity: 0;}
+    100% {transform: translateY(0%); animation-timing-function: ease-out; opacity: 1;}
+}
+@keyframes slide-up {
+    0% {transform: translateY(50%); animation-timing-function: ease-in; opacity: 0;}
+    100% {transform: translateY(0%); animation-timing-function: ease-out; opacity: 1;}
+}
+@media screen and (max-width: 760px) {
+    #main-contents div.background div.images2 img.img3 {left: 18%; min-width: 400px;}
+}
+@media screen and (max-width: 600px) {
+    #main-contents div.background div.images2 img.img2 {left: 3%; min-width: 200px;}
+    #main-contents div.background div.images2 img.img3 {left: 18%; min-width: 300px;}
+    #main-contents div.background div.images3 img.img1 {min-width: 450px;}
+}
+
+#main-contents a {position: absolute; bottom: 9%; width: 28%; transition: 0.3s; z-index: 15;}
+#main-contents a.prev {left: 10%;}
+#main-contents a.next {text-align: right; right: 10%;}
+#main-contents a span.num {display: inline-block; width: 30%; font-size: 25px; color: #fff;}
+#main-contents a span.line {position: absolute; top: 50%; transform: translate(0, -50%); width: 70%; height: 3px; background: #ff493b; transition: 0.3s;}
+#main-contents a.prev span.line {right: 0;}
+#main-contents a.next span.line {left: 0;}
+#main-contents a.go {position: absolute; bottom: 8%; left: 50%; transform: translate(-50%, 0); width: 156px; text-align: center; transition: 0.3s; z-index: 16;}
+#main-contents a.go p {width: 100%; line-height: 60px; font-size: 30px; color: #fff;}
+
+@media screen and (max-width: 640px) {
+    #main-contents a {width: 25%;}
+    #main-contents a.prev {left: 10%;}
+    #main-contents a.next {right: 10%;}
+    #main-contents a span.num {font-size: 17px; width: 40%;}
+    #main-contents a span.line {height: 2px; width: 60%;}
+    #main-contents a.go {bottom: 7.5%;}
+    #main-contents a.go p {font-size: 20px;}
+}
+
+/*main-business*/
+#main-business {height: auto; background: #f5f5f5 url(../img/bg_logo.png) no-repeat left 95% top 20px; padding-bottom: 50px;}
+#main-business h2 {padding-top: 50px; width: 100%; text-align: center; font-size: 20px; font-weight: normal; z-index: 100;}
+#main-business h2:after {content: ''; display: block; width: 15px; height: 3px; margin: 1% auto 6%; background: #ff3f34;}
+#main-business ul {width: 80%; margin: 0 auto; background: #fff;}
+#main-business ul:after {content: ''; display: block; clear: both;}
+#main-business ul li {float: left; width: 50%; padding: 36px 32px 10px 32px; box-sizing: border-box;}
+#main-business ul li + li {border-left: 1px solid #d1d1d1;}
+#main-business ul li h3 {font-size: 26px; font-weight: 700;}
+#main-business ul li h3:after {content: ''; display: block; width: 15px; height: 3px; margin: 10px 0; background: #ff3f34;}
+#main-business ul li p {padding-top: 150px;}
+#main-business ul li:nth-child(1) {background: url(../img/about-banner1.png) no-repeat top 57% right 35px;}
+#main-business ul li:nth-child(2) {background: url(../img/about-banner2.png) no-repeat top 53% right 35px;}
+#main-business ul li:nth-child(3) {background: url(../img/business-banner3.png) no-repeat top 57% right 35px;}
+#main-business ul li:nth-child(4) {background: url(../img/business-banner4.png) no-repeat top 53% right 35px;}
+#main-business ul li:nth-child(3n) {border-left: none;}
+#main-business ul li:nth-child(1) p {background: url(../img/about-banner-icon1.png) no-repeat top 10px left;}
+#main-business ul li:nth-child(2) p {background: url(../img/about-banner-icon2.png) no-repeat top 10px left;}
+#main-business ul li:nth-child(3) p {background: url(../img/business-banner-icon3.png) no-repeat top 10px left;}
+#main-business ul li:nth-child(4) p {background: url(../img/business-banner-icon4.png) no-repeat top 10px left;}
+
+@media screen and (max-width: 800px) {
+    #main-business ul li {width: 100%; padding: 30px 32px 30px 32px;}
+    #main-business ul li + li {border-top: 1px solid #d1d1d1; border-left: none;}
+    #main-business ul li h3 {font-size: 23px; font-weight: 700; float: left; width: 30%;}
+    #main-business ul li p {float: right; width: 70%; padding-top: 0px; padding-left: 45px; box-sizing: border-box; transition: 0.3s;}
+    #main-business ul li:nth-child(1) {background: none;}
+    #main-business ul li:nth-child(2) {background: none;}
+    #main-business ul li:nth-child(3) {background: none;}
+    #main-business ul li:nth-child(4) {background: none;}
+}
+@media screen and (max-width: 600px) {
+    #main-business ul li {width: 100%; padding: 10px 32px 10px 32px;}
+    #main-business ul li h3 {width: 100%;}
+    #main-business ul li p {width: 100%;}
+}
+
+
+
+
+
